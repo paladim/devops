@@ -4,10 +4,6 @@
 
 # run
 
-## create volume
+`docker run -p 8080:8080 ubuntu/tomcat`
 
-`docker volume create jenkins`
-
-## run
-
-`docker run -p 8080:8080 -e JENKINS_HOME=/opt/tomcat/jenkins -v jenkins:/opt/tomcat/jenkins ubuntu/tomcat`
+`http://localhost:8080/wwp-1.0.0/`
