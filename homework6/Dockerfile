@@ -1,0 +1,27 @@
+FROM ubuntu:20.04
+
+RUN apt-get update
+
+RUN apt-get install default-jdk wget -y
+
+RUN useradd tomcat -U -s /bin/false -d /opt/tomcat -m
+
+WORKDIR /opt/tomcat
+
+RUN mkdir -p /opt/tomcat/jenkins
+
+RUN chown -R tomcat:tomcat /opt/tomcat/jenkins
+
+USER tomcat
+
+RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.58/bin/apache-tomcat-9.0.58.tar.gz
+
+RUN tar zxvf apache-tomcat-*.tar.gz -C /opt/tomcat --strip-components 1
+
+RUN wget https://get.jenkins.io/war-stable/2.319.2/jenkins.war
+
+RUN cp jenkins.war webapps
+
+EXPOSE 8080
+
+CMD ["/opt/tomcat/bin/catalina.sh", "run"]
