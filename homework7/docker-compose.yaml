@@ -1,0 +1,15 @@
+
+version: '3.9'
+
+services:
+  java-build:
+    build: ./java-build
+    image: my/javabuild
+  
+  java-prod:
+    build: ./java-prod
+    depends_on:
+      - java-build
+    ports: 
+      - "8080:8080"
+    
