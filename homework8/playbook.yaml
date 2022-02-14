@@ -37,13 +37,13 @@
 
   tasks:
 
+  - name: Ensure tomcat9 package is present
+    apt:
+      name: tomcat9
+      state: present
+
   - name: Ensure project is deploy
     synchronize:
       src: /opt/project/target/hello-1.0.war
       dest: /var/lib/tomcat9/webapps/
     delegate_to: server-2
-
-  - name: Ensure tomcat9 package is present
-    apt:
-      name: tomcat9
-      state: present
