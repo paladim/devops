@@ -1,0 +1,55 @@
+---
+dream:
+  persons:
+    - name: Ola
+      number: 4
+      prof: buh
+      departments: [1]
+    - name: Dmitry
+      number: 3
+      departments: [1]
+    - name: Ivan
+      number: 2
+      departments: [1]
+    - name: Roman
+      number: 4
+      prof: lawyer
+      departments: [2]
+      years_before: 30
+    - name: Max
+      number: 2
+      prof: driver
+      departments: [2]
+    - name: Ola
+      number: 1
+      prof: lawyer
+      departments: [3]
+    - name: Ivan
+      number: 1
+      prof: builder
+      departments: [3]
+    - name: Nikolay
+      number: 1
+      prof: builder
+      departments: [3]
+    - name: Youl'
+      number: 5
+      prof: documents
+      departments: [4,5]
+      years_after: 30
+    - name: Igor'
+      patronymic: Victorovich
+      departments: [6]
+      prof: security_manager
+      years_after: 50
+  departments:
+    1: 
+      number_highly_paid: 1
+    2:
+    3:
+    4:
+    5:
+      number_highly_paid: 2
+      pensioners:
+        men: all
+    6:
