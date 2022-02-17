@@ -1,5 +1,26 @@
 ---
+- name: commons
+  hosts: servers
+  become: yes
+
+  roles:
+    - commons
+         
 - name: build
+  hosts: build
+  become: yes
+
+  roles:
+    - build
+
+- name: deploy
+  hosts: deploy
+  become: yes
+
+  roles:
+    - deploy
+
+- name: build app
   hosts: build
   become: yes
 
@@ -15,7 +36,7 @@
   - name: Ensure project is build
     command: 'mvn -f /opt/project package'
 
-- name: deploy
+- name: deploy app
   hosts: deploy
   become: yes
 
