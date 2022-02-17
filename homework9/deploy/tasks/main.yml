@@ -1,0 +1,7 @@
+---
+# tasks file for deploy
+
+- name: Ensure tomcat9 package is present
+  apt:
+    name: tomcat9
+    state: present
