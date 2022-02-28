@@ -1,19 +1,28 @@
 pipeline {
-    agent {
-        docker {
-            image "node:16.13.1-alpine"
-        }
-    }
+    agent any
     stages {
-        stage("Build") {
+        stage("Prepare build") {
             steps {
-                echo "Git clone project"
+                echo "Prepare build"
+                docker {
+                    sh "docker build -f homework11/JenkinsAgentDockerfile . -t project-build"
+                }
+            }
+        }
+        stage("Build") {
+            agent {
+                docker {
+                    image "project-build"
+                }
+            }
+            steps {
+                echo "Build start"
+                sh 'node --version'
             }
         }
         stage("Test") {
             steps {
                 echo "Test Success!"
-                sh 'node --version'
             }
         }
         stage("Deploy" ) {
