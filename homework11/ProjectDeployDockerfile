@@ -1,4 +1,4 @@
-FROM javabuild as builder
+FROM app-build as builder
 
 FROM alpine:3.15.0
 
