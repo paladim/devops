@@ -34,6 +34,7 @@ pipeline {
             }
             steps {
                 echo "Build start"
+                sh "docker login -u admin -p admin 192.168.0.103:8123"
                 sh "docker build -f homework11/ProjectBuildDockerfile . -t app-build"
                 sh "docker build -f homework11/ProjectDeployDockerfile . -t app-deploy"
                 sh "docker image tag app-deploy 192.168.0.103:8123/docker/java-docker:latest"
