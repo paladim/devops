@@ -1,4 +1,16 @@
 pipeline {
+     options {
+        buildDiscarder(
+            logRotator(
+                artifactDaysToKeepStr: "",
+                artifactNumToKeepStr: "",
+                daysToKeepStr: "",
+                numToKeepStr: "10"
+            )
+        )
+        disableConcurrentBuilds()
+    }
+
     agent {
         node {
             label 'docker'
@@ -15,6 +27,8 @@ pipeline {
             agent {
                 docker {
                     image "project-build"
+                    reuseNode true
+                    label "build-image"
                 }
             }
             steps {
