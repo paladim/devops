@@ -36,6 +36,8 @@ pipeline {
                 echo "Build start"
                 sh "docker build -f homework11/ProjectBuildDockerfile . -t app-build"
                 sh "docker build -f homework11/ProjectDeployDockerfile . -t app-deploy"
+                sh "docker image tag app-deploy 192.168.0.103:8123/docker/java-docker:latest"
+                sh "docker push 192.168.0.103:8123/docker/java-docker:latest"
             }
         }
         stage("Test") {
