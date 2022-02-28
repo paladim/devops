@@ -4,9 +4,7 @@ pipeline {
         stage("Prepare build") {
             steps {
                 echo "Prepare build"
-                docker {
-                    sh "docker build -f homework11/JenkinsAgentDockerfile . -t project-build"
-                }
+                sh "docker build -f homework11/JenkinsAgentDockerfile . -t project-build"
             }
         }
         stage("Build") {
