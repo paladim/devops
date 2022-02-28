@@ -21,7 +21,6 @@ pipeline {
             // }
             steps {
                 echo "Build start"
-                sh 'node --version'
             }
         }
         stage("Test") {
