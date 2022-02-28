@@ -1,3 +1,4 @@
 FROM ubuntu:20.04
 
-RUN apt install docker.io -y
+RUN apt-get update
+RUN apt-get install -y docker.io
