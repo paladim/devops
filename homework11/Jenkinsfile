@@ -47,8 +47,17 @@ pipeline {
             }
         }
         stage("Deploy" ) {
+            agent {
+                node {
+                    label 'prod'
+                }
+            }
             steps {
                 echo "Deploy"
+                sh "docker login -u admin -p admin 192.168.0.103:8123"
+                sh "docker rm java-project -f"
+                sh "docker run -d 8082:8080 --name java-project 192.168.0.103:8123/docker/java-docker:latest"
+
             }
         }
     }
