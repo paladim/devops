@@ -1,15 +1,15 @@
 pipeline {
-     options {
-        buildDiscarder(
-            logRotator(
-                artifactDaysToKeepStr: "",
-                artifactNumToKeepStr: "",
-                daysToKeepStr: "",
-                numToKeepStr: "10"
-            )
-        )
-        disableConcurrentBuilds()
-    }
+    //  options {
+    //     buildDiscarder(
+    //         logRotator(
+    //             artifactDaysToKeepStr: "",
+    //             artifactNumToKeepStr: "",
+    //             daysToKeepStr: "",
+    //             numToKeepStr: "10"
+    //         )
+    //     )
+    //     disableConcurrentBuilds()
+    // }
 
     agent {
         node {
@@ -34,8 +34,8 @@ pipeline {
             }
             steps {
                 echo "Build start"
-                sh "docker --privileged build -f homework11/ProjectBuildDockerfile . -t app-build"
-                sh "docker --privileged build -f homework11/ProjectDeployDockerfile . -t app-deploy"
+                sh "docker build -f homework11/ProjectBuildDockerfile . -t app-build"
+                sh "docker build -f homework11/ProjectDeployDockerfile . -t app-deploy"
             }
         }
         stage("Test") {
