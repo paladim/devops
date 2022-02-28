@@ -33,6 +33,7 @@ pipeline {
             }
             steps {
                 echo "Build start"
+                sh 'sleep 3000'
                 sh "docker build -f homework11/ProjectBuildDockerfile . -t app-build"
                 sh "docker build -f homework11/ProjectDeployDockerfile . -t app-deploy"
             }
