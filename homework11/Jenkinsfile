@@ -1,11 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage("Deps") {
-            steps {
-                echo "Git clone project"
-            }
-        }
         stage("Build") {
             steps {
                 echo "Git clone project"
