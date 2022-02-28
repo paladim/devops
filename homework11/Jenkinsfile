@@ -27,6 +27,7 @@ pipeline {
             agent {
                 docker {
                     image "project-build"
+                    args '--privileged'
                     reuseNode true
                     label "build-image"
                 }
