@@ -27,15 +27,15 @@ pipeline {
             agent {
                 docker {
                     image "project-build"
-                    args '--privileged'
+                    // args '--privileged'
                     reuseNode true
                     label "build-image"
                 }
             }
             steps {
                 echo "Build start"
-                sh "docker build -f homework11/ProjectBuildDockerfile . -t app-build"
-                sh "docker build -f homework11/ProjectDeployDockerfile . -t app-deploy"
+                sh "docker --privileged build -f homework11/ProjectBuildDockerfile . -t app-build"
+                sh "docker --privileged build -f homework11/ProjectDeployDockerfile . -t app-deploy"
             }
         }
         stage("Test") {
