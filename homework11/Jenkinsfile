@@ -8,8 +8,6 @@ pipeline {
         stage("Prepare build") {
             steps {
                 echo "Prepare build"
-                sh 'id'
-                sh 'ip address'
                 sh "docker build -f homework11/JenkinsAgentDockerfile . -t project-build"
             }
         }
@@ -21,8 +19,8 @@ pipeline {
             }
             steps {
                 echo "Build start"
-                sh 'id'
-                sh 'ip address'
+                sh "docker build -f homework11/ProjectBuildDockerfile . -t app-build"
+                sh "docker build -f homework11/ProjectDeployDockerfile . -t app-deploy"
             }
         }
         stage("Test") {
