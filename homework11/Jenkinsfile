@@ -4,7 +4,8 @@ pipeline {
         stage("Prepare build") {
             steps {
                 echo "Prepare build"
-                sh 'hostname'
+                sh 'id'
+                sh 'ip address'
                 sh "docker build -f homework11/JenkinsAgentDockerfile . -t project-build"
             }
         }
