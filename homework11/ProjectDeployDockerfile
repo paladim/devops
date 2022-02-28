@@ -8,7 +8,7 @@ RUN apk add openjdk8-jre-base
 
 COPY --from=builder /opt/tomcat/ /opt/tomcat/
 
-COPY --from=builder /app/target/hello-1.0.war /opt/tomcat/webapps/
+COPY --from=builder /app/target/*.war /opt/tomcat/webapps/
 
 EXPOSE 8080
 
