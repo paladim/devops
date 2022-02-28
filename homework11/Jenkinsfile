@@ -14,13 +14,15 @@ pipeline {
             }
         }
         stage("Build") {
-            // agent {
-            //     docker {
-            //         image "project-build"
-            //     }
-            // }
+            agent {
+                docker {
+                    image "project-build"
+                }
+            }
             steps {
                 echo "Build start"
+                sh 'id'
+                sh 'ip address'
             }
         }
         stage("Test") {
