@@ -1,19 +1,40 @@
 pipeline {
+     options {
+        buildDiscarder(
+            logRotator(
+                artifactDaysToKeepStr: "",
+                artifactNumToKeepStr: "",
+                daysToKeepStr: "",
+                numToKeepStr: "10"
+            )
+        )
+        disableConcurrentBuilds()
+    }
+
     agent {
         node {
             label 'docker'
         }
-        docker {
-            image "192.168.0.103:8123/docker/jenkins-agent"
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-            reuseNode true
-            label "jenkins-agent"
-        }
     }
     stages {
+        stage("Prepare build") {
+            steps {
+                echo "Prepare build"
+                sh "docker build -f homework11/JenkinsAgentDockerfile . -t project-build"
+            }
+        }
         stage("Build") {
+            agent {
+                docker {
+                    image "project-build"
+                    args '-v /var/run/docker.sock:/var/run/docker.sock'
+                    reuseNode true
+                    label "build-image"
+                }
+            }
             steps {
                 echo "Build start"
+                sh "docker login -u admin -p admin 192.168.0.103:8123"
                 sh "docker build -f homework11/ProjectBuildDockerfile . -t app-build"
                 sh "docker build -f homework11/ProjectDeployDockerfile . -t app-deploy"
                 sh "docker image tag app-deploy 192.168.0.103:8123/docker/java-docker:latest"
@@ -33,6 +54,7 @@ pipeline {
             }
             steps {
                 echo "Deploy"
+                sh "docker login -u admin -p admin 192.168.0.103:8123"
                 sh "docker rm java-project -f"
                 sh "docker pull 192.168.0.103:8123/docker/java-docker:latest"
                 sh "docker run -d -p 8082:8080 --name java-project 192.168.0.103:8123/docker/java-docker:latest"
