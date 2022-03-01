@@ -8,7 +8,7 @@ pipeline {
         stage("Build") {
             agent {
                 docker {
-                    image "192.168.0.103:8123/docker/jenkins-agent"
+                    image "192.168.0.103:8123/docker/jenkins-agent:latest"
                     args '-v /var/run/docker.sock:/var/run/docker.sock'
                     reuseNode true
                     label "jenkins-agent"
