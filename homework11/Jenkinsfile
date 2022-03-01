@@ -3,15 +3,17 @@ pipeline {
         node {
             label 'docker'
         }
-        docker {
-            image "192.168.0.103:8123/docker/jenkins-agent"
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-            reuseNode true
-            label "jenkins-agent"
-        }
     }
     stages {
         stage("Build") {
+            agent {
+                docker {
+                    image "192.168.0.103:8123/docker/jenkins-agent"
+                    args '-v /var/run/docker.sock:/var/run/docker.sock'
+                    reuseNode true
+                    label "jenkins-agent"
+                }
+            }
             steps {
                 echo "Build start"
                 sh "docker build -f homework11/ProjectBuildDockerfile . -t app-build"
