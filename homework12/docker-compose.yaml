@@ -2,8 +2,11 @@ version: '3.9'
 
 services:
   build:
+    hostname: build
     build: ./home-app-1-build
     image: home-app-1-build
+    networks:
+      - home
   
   db:
     image: mariadb
@@ -16,11 +19,11 @@ services:
       MYSQL_DATABASE: home-app-1
       MYSQL_ROOT_PASSWORD: password
     ports:
-      - 3306:3306
+      - 3307:3306
     volumes:
       - dbdata:/var/lib/myslq
     networks:
-      - home-app
+      - home
 
   app:
     build: ./home-app-1-deploy
@@ -32,7 +35,7 @@ services:
     ports: 
       - 8080:8080
     networks:
-      - home-app
+      - home
     
   adminer:
     image: adminer
@@ -45,11 +48,11 @@ services:
     ports:
       - 8081:8080
     networks:
-      - home-app
+      - home
 
 volumes:
   dbdata:
     
 networks:
-  home-app:
+  home:
     external: true
