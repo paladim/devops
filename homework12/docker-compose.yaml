@@ -1,0 +1,55 @@
+version: '3.9'
+
+services:
+  build:
+    build: ./home-app-1-build
+    image: home-app-1-build
+  
+  db:
+    image: mariadb
+    restart: always
+    hostname: db
+    container_name: db
+    environment:
+      MYSQL_USER: home-app-1
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: home-app-1
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3306:3306
+    volumes:
+      - dbdata:/var/lib/myslq
+    networks:
+      - home-app
+
+  app:
+    build: ./home-app-1-deploy
+    hostname: app
+    container_name: app
+    depends_on:
+      - build
+      - db
+    ports: 
+      - 8080:8080
+    networks:
+      - home-app
+    
+  adminer:
+    image: adminer
+    restart: always
+    hostname: adminer
+    container_name: adminer
+    depends_on:
+      - build
+      - db
+    ports:
+      - 8081:8080
+    networks:
+      - home-app
+
+volumes:
+  dbdata:
+    
+networks:
+  home-app:
+    external: true
