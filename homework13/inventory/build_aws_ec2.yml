@@ -1,0 +1,11 @@
+plugin: aws_ec2
+regions:
+  - eu-central-1
+filters:
+  instance-state-name: running
+keyed_groups:
+  - 
+    prefix: ""
+    key: tags['type']
+    separator: ""
+

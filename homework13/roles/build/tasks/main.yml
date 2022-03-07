@@ -1,0 +1,16 @@
+---
+# tasks file for build
+- name: Ensure maven package is present
+  apt: name=maven state=present update_cache=yes
+
+- name: Ensure git package is present
+  apt:
+    name: git-core
+    state: present
+    update_cache: yes
+
+- name: Ensure jdk package is present
+  apt:
+    name: default-jdk
+    state: present
+    update_cache: yes

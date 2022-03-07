@@ -1,0 +1,33 @@
+vagrant1 ansible_host=127.0.0.1 ansible_port=2222
+vagrant2 ansible_host=127.0.0.1 ansible_port=2200
+vagrant3 ansible_host=127.0.0.1 ansible_port=2201
+
+
+# [webservers]
+# vagrant1
+# vagrant2
+# vagrant3
+
+# [first]
+# vagrant1
+
+# [first:vars]
+# name=first
+
+# [second]
+# vagrant2
+
+
+# [onetwo:children]
+# first
+# second
+
+# [onetwo:vars]
+# group_name=onetwo
+
+# [second:vars]
+# name=second
+# group_name=second_group_name
+
+[local]
+127.0.0.1 ansible_connection=local
