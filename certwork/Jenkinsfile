@@ -4,8 +4,8 @@ pipeline {
         stage("Build") {
             steps {
                 echo "Build start"
-                sh "terraform init"
-                sh "terraform plan"
+                sh "terraform -chdir=certwork/terraform init"
+                sh "terraform -chdir=certwork/terraform plan"
             }
         }
         stage("Test") {
