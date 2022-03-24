@@ -23,7 +23,7 @@ pipeline {
                 echo "Build start"
                 sh "[ ! -d /opt/app1 ] && git clone https://github.com/paladim/devops /opt/app1 || true"
                 sh "git -C /opt/app1 pull"
-                sh "[ ! -d /opt/app1/certwork/keys ] && mkdir -p /opt/app1/certwork/keys && ssh-keygen -q -t rsa -N '' -f /opt/app1/certwork/keys/ssh_key <<<y >/dev/null 2>&1 || true"
+                sh "[ ! -d /opt/app1/certwork/keys ] && mkdir -p /opt/app1/certwork/keys && ssh-keygen -t rsa -N '' -f /opt/app1/certwork/keys/ssh_key <<<y >/dev/null 2>&1 || true"
                 sh "terraform -chdir=certwork/terraform init -var='AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}' -var='AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}'"
                 sh "terraform -chdir=certwork/terraform plan -var='AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}' -var='AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}'"
             }
