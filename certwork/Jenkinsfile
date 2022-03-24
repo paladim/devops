@@ -23,8 +23,8 @@ pipeline {
                 echo "Build start"
                 sh "pwd"
                 sh "ls -al"
-                sh "terraform -chdir=certwork/terraform init"
-                sh "terraform -chdir=certwork/terraform plan"
+                sh "terraform -chdir=certwork/terraform init -var='AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}' -var='AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}'"
+                // sh "terraform -chdir=certwork/terraform plan"
             }
         }
     }
