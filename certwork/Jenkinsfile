@@ -3,10 +3,6 @@ pipeline {
         password (name: 'AWS_ACCESS_KEY_ID')
         password (name: 'AWS_SECRET_ACCESS_KEY')
     }
-    // environment {
-    //     TF_VAR_AWS_ACCESS_KEY_ID = "${params.AWS_ACCESS_KEY_ID}"
-    //     TF_VAR_AWS_SECRET_ACCESS_KEY = "${params.AWS_SECRET_ACCESS_KEY}"
-    // }
 
     agent any
     stages {
@@ -26,7 +22,8 @@ pipeline {
                 sh "[ ! -d /opt/app1/certwork/keys ] && mkdir -p /opt/app1/certwork/keys || true"
                 sh "[ ! -f /opt/app1/certwork/keys/ssh_key ] && ssh-keygen -t rsa -N '' -f /opt/app1/certwork/keys/ssh_key || true"
                 sh "terraform -chdir=/opt/app1/certwork/terraform init -var='AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}' -var='AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}'"
-                sh "terraform -chdir=/op/app1/certwork/terraform plan -var='AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}' -var='AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}'"
+                sh "terraform -chdir=/opt/app1/certwork/terraform plan -var='AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}' -var='AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}'"
+                sh "terraform -chdir=/opt/app1/certwork/terraform apply -var='AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}' -var='AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}'"
             }
         }
     }
