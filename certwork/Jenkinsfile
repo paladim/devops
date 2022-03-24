@@ -7,16 +7,8 @@ pipeline {
     agent any
     stages {
         stage("Deploy") {
-            // agent {
-            //     docker {
-            //         image "jenkins-agent:latest"
-            //         args '-v /var/run/docker.sock:/var/run/docker.sock'
-            //         reuseNode true
-            //         label "jenkins-agent"
-            //     }
-            // }
             steps {
-                echo "Build start"
+                echo "Deploy"
                 sh "[ ! -d /opt/app1 ] && git clone https://github.com/paladim/devops /opt/app1 || true"
                 sh "git -C /opt/app1 pull"
                 sh "[ ! -d /opt/app1/certwork/keys ] && mkdir -p /opt/app1/certwork/keys || true"
@@ -24,6 +16,7 @@ pipeline {
                 sh "terraform -chdir=/opt/app1/certwork/terraform init -var='AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}' -var='AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}'"
                 sh "terraform -chdir=/opt/app1/certwork/terraform plan -var='AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}' -var='AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}'"
                 sh "terraform -chdir=/opt/app1/certwork/terraform apply -auto-approve -var='AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}' -var='AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}'"
+                sh "ansible-playbook playbook.yml --extra-vars 'aws_access_key_id=${params.AWS_ACCESS_KEY_ID} aws_secret_access_key=${params.AWS_SECRET_ACCESS_KEY}'"
             }
         }
     }
