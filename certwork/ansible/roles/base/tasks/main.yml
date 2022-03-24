@@ -16,21 +16,21 @@
     update_cache: yes
 
 
-- name: Ensure aws-cli package is present
+- name: Ensure awscli package is present
   apt:
     name: awscli
     state: present
     update_cache: yes
 
-- name: Ensure awscli package is present
+- name: Get account id
   shell: 
     cmd: "export AWS_ACCESS_KEY_ID={{aws_access_key_id}} && export AWS_SECRET_ACCESS_KEY={{aws_secret_access_key}} && aws sts get-caller-identity"
   register: account
 
-- name: set account id
+- name: Set account id
   set_fact:
     account_id: "{{ account.stdout | from_json }}"
 
-- name: docker add aws repository
+- name: Docker add aws repository
   shell:
     cmd: "export AWS_ACCESS_KEY_ID={{aws_access_key_id}} && export AWS_SECRET_ACCESS_KEY={{aws_secret_access_key}} && aws ecr get-login-password --region eu-central-1  | docker login --username AWS --password-stdin {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com"
