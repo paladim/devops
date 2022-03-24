@@ -22,18 +22,17 @@
     - name: Project source is present
       ansible.builtin.git:
         repo: 'https://github.com/paladim/devops'
-        dest: /opt/project
+        dest: /opt/application
         clone: yes
         update: yes
 
-
     - name: Build container
       shell:
-        cmd: "docker build -f /opt/project/homework11/ProjectBuildDockerfile . -t app-build:latest"
+        cmd: "docker build -f /opt/application/homework11/ProjectBuildDockerfile . -t app-build:latest"
 
     - name: Deploy container
       shell:
-        cmd: "docker build -f /opt/project/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+        cmd: "docker build -f /opt/application/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
 
     - name: Tag container
       shell:
