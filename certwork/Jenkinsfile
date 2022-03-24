@@ -4,6 +4,8 @@ pipeline {
         stage("Build") {
             steps {
                 echo "Build start"
+                sh "terraform init"
+                sh "terraform plan"
             }
         }
         stage("Test") {
