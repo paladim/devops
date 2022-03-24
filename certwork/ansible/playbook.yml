@@ -1,5 +1,7 @@
 ---
 
+# 629505525427
+
 - name: Build configure
   hosts: build
   become: yes
@@ -7,16 +9,42 @@
     - base
 
 - name: Staging configure
-  hosts: staging
+  hosts: build
   become: yes
   roles:
     - base
 
-# - name: build app
-#   hosts: build
-#   become: yes
+    
+- name: Build
+  hosts: build
+  become: yes
 
-#   tasks:
+  tasks:
+
+    - name: Ensure project is present
+      ansible.builtin.git:
+        repo: 'https://github.com/paladim/devops'
+        dest: /opt/project
+        clone: yes
+        update: yes
+
+
+    - name: docker1
+      docker_image:
+        build:
+          dockerfile: /opt/project/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+    # - name: docker1
+    #   shell:
+    #     cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+    # - name: docker1
+    #   shell:
+    #     cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+    #     - name: docker1
+    #       shell:
+    #         cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
 
 #     - name: Ensure project is present
 #       ansible.builtin.git:
@@ -33,3 +61,1501 @@
 #         src: /opt/project/target/hello-1.0.war
 #         dest: tmp/hello.war
 #         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+.com/app:latest"
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
+
+---
+
+# 629505525427
+
+- name: Build configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+- name: Staging configure
+  hosts: build
+  become: yes
+  roles:
+    - base
+
+    
+- name: Build
+  hosts: build
+  become: yes
+
+  tasks:
+    - name: docker1
+      shell:
+        cmd: "rm -rf /opt/app5"
+
+     - name: docker1
+       shell:
+       cmd: "git clone https://github.com/paladim/devops /opt/app5"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectBuildDockerfile . -t app-build:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker build -f /opt/app5/homework11/ProjectDeployDockerfile . -t app-deploy:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker tag app-deploy:latest {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+        - name: docker1
+          shell:
+            cmd: "docker push {{ account_id.Account }}.dkr.ecr.eu-central-1.amazonaws.com/app:latest"
+
+#     - name: Ensure project is present
+#       ansible.builtin.git:
+#         repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+#         dest: /opt/project
+#         clone: yes
+#         update: yes
+
+#     - name: Ensure project is build
+#       command: 'mvn -f /opt/project package'
+
+#     - name: Copy file from build
+#       fetch:
+#         src: /opt/project/target/hello-1.0.war
+#         dest: tmp/hello.war
+#         flat: yes
+#
+#
+#
