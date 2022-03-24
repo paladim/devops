@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage("Build") {
+        stage("Deploy") {
             agent {
                 docker {
                     image "jenkins-agent:latest"
@@ -16,16 +16,6 @@ pipeline {
                 sh "ls -al"
                 sh "terraform -chdir=certwork/terraform init"
                 sh "terraform -chdir=certwork/terraform plan"
-            }
-        }
-        stage("Test") {
-            steps {
-                echo "Test Success!"
-            }
-        }
-        stage("Deploy" ) {
-            steps {
-                echo "Deploy"
             }
         }
     }
