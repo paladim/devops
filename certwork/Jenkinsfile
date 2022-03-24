@@ -2,14 +2,14 @@ pipeline {
     agent any
     stages {
         stage("Deploy") {
-            agent {
-                docker {
-                    image "jenkins-agent:latest"
-                    args '-v /var/run/docker.sock:/var/run/docker.sock'
-                    reuseNode true
-                    label "jenkins-agent"
-                }
-            }
+            // agent {
+            //     docker {
+            //         image "jenkins-agent:latest"
+            //         args '-v /var/run/docker.sock:/var/run/docker.sock'
+            //         reuseNode true
+            //         label "jenkins-agent"
+            //     }
+            // }
             steps {
                 echo "Build start"
                 sh "pwd"
