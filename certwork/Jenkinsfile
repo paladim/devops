@@ -25,7 +25,6 @@ pipeline {
                 sh "git -C /opt/app1 pull"
                 sh "[ ! -d /opt/app1/certwork/keys ] && mkdir -p /opt/app1/certwork/keys || true"
                 sh "[ ! -f /opt/app1/certwork/keys/ssh_key ] && ssh-keygen -t rsa -N '' -f /opt/app1/certwork/keys/ssh_key || true"
-                sh "echo 'AWS_ACCESS_KEY_ID=\"${params.AWS_ACCESS_KEY_ID}\"'"
                 sh "terraform -chdir=/opt/app1/certwork/terraform init -var='AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}' -var='AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}'"
                 sh "terraform -chdir=/op/app1/certwork/terraform plan -var='AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}' -var='AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}'"
             }
