@@ -3,28 +3,28 @@ pipeline {
         password (name: 'AWS_ACCESS_KEY_ID')
         password (name: 'AWS_SECRET_ACCESS_KEY')
     }
-    environment {
-        TF_VAR_AWS_ACCESS_KEY_ID = "${params.AWS_ACCESS_KEY_ID}"
-        TF_VAR_AWS_SECRET_ACCESS_KEY = "${params.AWS_SECRET_ACCESS_KEY}"
-    }
+    // environment {
+    //     TF_VAR_AWS_ACCESS_KEY_ID = "${params.AWS_ACCESS_KEY_ID}"
+    //     TF_VAR_AWS_SECRET_ACCESS_KEY = "${params.AWS_SECRET_ACCESS_KEY}"
+    // }
 
     agent any
     stages {
         stage("Deploy") {
-            agent {
-                docker {
-                    image "jenkins-agent:latest"
-                    args '-v /var/run/docker.sock:/var/run/docker.sock'
-                    reuseNode true
-                    label "jenkins-agent"
-                }
-            }
+            // agent {
+            //     docker {
+            //         image "jenkins-agent:latest"
+            //         args '-v /var/run/docker.sock:/var/run/docker.sock'
+            //         reuseNode true
+            //         label "jenkins-agent"
+            //     }
+            // }
             steps {
                 echo "Build start"
-                sh "pwd"
-                sh "ls -al"
+                sh "[ ! -d /opt/app1 ] && git clone https://github.com/paladim/devops /opt/app1"
+                sh "git -C /opt/app1 pull"
                 sh "terraform -chdir=certwork/terraform init -var='AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}' -var='AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}'"
-                // sh "terraform -chdir=certwork/terraform plan"
+                sh "terraform -chdir=certwork/terraform plan -var='AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}' -var='AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}'"
             }
         }
     }
