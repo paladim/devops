@@ -1,0 +1,22 @@
+---
+- name: build app
+  hosts: build
+  become: yes
+
+  tasks:
+
+    - name: Ensure project is present
+      ansible.builtin.git:
+        repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello'
+        dest: /opt/project
+        clone: yes
+        update: yes
+
+    - name: Ensure project is build
+      command: 'mvn -f /opt/project package'
+
+    - name: Copy file from build
+      fetch:
+        src: /opt/project/target/hello-1.0.war
+        dest: tmp/hello.war
+        flat: yes
