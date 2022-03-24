@@ -130,3 +130,5 @@ dmypy.json
 /homework13/keys
 /homework13/tmp
 /certwork/keys
+/certwork/terraform/.terraform
+/certwork/terraform/.terraform.lock.hcl

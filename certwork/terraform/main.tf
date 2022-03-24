@@ -25,6 +25,9 @@ variable "staging_web_port" {
   default = 8080
 }
 
+data "local_file" "ssh_pub" {
+    filename = "${path.module}/../keys/${var.ssh_key}.pub"
+}
 
 resource "aws_instance" "build" {
   ami = "ami-0d527b8c289b4af7f"
@@ -93,7 +96,7 @@ resource "aws_security_group" "staging" {
 
 resource "aws_key_pair" "deployer" {
   key_name   = var.ssh_key
-  public_key = file(../keys/${ssh_key}.pub)
+  public_key = data.local_file.ssh_pub.content
 }
 
 resource "aws_ecr_repository" "repository" {
