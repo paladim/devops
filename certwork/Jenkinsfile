@@ -18,6 +18,7 @@ pipeline {
                 sh "terraform -chdir=/opt/app1/certwork/terraform apply -auto-approve -var='AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}' -var='AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}'"
                 dir('/opt/app1/certwork/ansible') {
                     sh """
+                       echo '${params.AWS_ACCESS_KEY_ID}'
                        ansible-playbook playbook.yml --extra-vars '{"aws_access_key_id":"${params.AWS_ACCESS_KEY_ID}", "aws_secret_access_key":"${params.AWS_SECRET_ACCESS_KEY}"}'
                     """
                 }
