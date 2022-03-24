@@ -1,7 +1,0 @@
-FROM ubuntu:20.04
-
-RUN apt-get update
-RUN apt-get install -y tzdata
-ENV TZ America/Los_Angeles
-
-RUN apt-get install -y docker.io gnupg software-properties-common curl ansible
